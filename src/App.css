@@ -1,9 +1,33 @@
 .profile{
-  margin-top: 7%;
+  
 }
 .header{
-  padding-top: 3%;
+
+}
+.profile{
+  text-align: center;
+  margin-top: 5%;
+}
+.repo-name{
+  color:blue;
+}
+.footer{
+  position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   padding-bottom:1% ;
+   
+   background-color: black;
+   color: rgb(160,160,160);
+   text-align: center;
 }
 .repo{
   font:blue;
+}
+.repo-btn{
+  align:center;
+}
+.search-btn{
+  max-width: 200px;
 }

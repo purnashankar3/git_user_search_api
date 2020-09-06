@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-
+import "../App.css"
 
 class Footer extends Component {
     render() {
         return (
-            <div className="text-center fixed-bottom mt-3 p-2" 
-            style={{backgroundColor: "black",fontColor:"white"}}>
+            <div className="footer" >
+           
                 Developed by PurnaShankar
             </div>
         );

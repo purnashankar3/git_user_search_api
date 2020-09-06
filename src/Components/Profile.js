@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {Card,CardBody, ListGroupItem,Container,Row,Col,Button,InputGroup} from "reactstrap";
+import "../App.css"
 
 import axios from "axios";
 
@@ -25,7 +27,9 @@ class Profile extends Component {
         })
         .catch(error=>{
             this.setState({errorMsg:"This username does not exist"})
+            alert("This username does not exist")
         })
+       
     }
     onChangeHandler2=()=>{
         axios.get(`https://api.github.com/users/${this.state.query}/repos`)
@@ -42,32 +46,48 @@ class Profile extends Component {
     render() {
         const git_data=this.state;
         return (
-         <>   
-            <div className="profile fixed text-center">
+
+            <>
+           
+                <div className="profile  text-center">
                 
                 <input type="text" value={this.state.query} onChange={this.onChangeHandler} placeholder="Enter the git username"/>
                 
-                <button type="submit" onClick={this.onClickHandler}>Search</button>
+                <button className="search-btn"   onClick={this.onClickHandler}>Search</button>
                 </div>
-            
-                <div>   
-                <img src={this.state.git_data.avatar_url} className="img-thumbnail"/>
-                <h2>
-                {this.state.git_data.name}
-                </h2>
-                <p>{this.state.git_data.bio}</p>
-                <div>
-                    <button onClick={this.onChangeHandler2} >Repositroies</button>
+                <Container>
+                    <Row>
+                        <Col>
+                        <div>
+                        
+                         <img src={this.state.git_data.avatar_url} className="img-thumbnail"/>
+                         
+                          <h2>
+                         {this.state.git_data.name}
+                         </h2>
+                         <p>{this.state.git_data.bio}</p>
+                        
+                        
+                         </div>
+                         </Col>
+                    <Col>
+                    <div className="text-center">
+                    <Button className="repo-btn" color="secondary" onClick={this.onChangeHandler2} >Repositroies</Button>
+                    </div>
                     {this.state.git_data.repo_url}
                     {this.state.repos.map(repo=><ul key={repo.id}>
-                            <li className="repo">{repo.name}</li><br/>
-                            {repo.language}<br/>
-                            {repo.description}
+                        
+                            <div className="repo-name">{repo.name}</div>
+                           <div className="text-secondary"> {repo.language}</div>
+                           <div className="text-secondary">{repo.description}</div> 
+                           
                     </ul>)}
-                </div>
-
-            </div>
-        </>
+                
+                </Col>
+                </Row>
+            </Container>
+        </>    
+        
         );
     }
 }
